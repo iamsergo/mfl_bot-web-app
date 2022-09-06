@@ -1,0 +1,32 @@
+.prediction-modal
+  background-color: var(--bg-color)
+  padding: 24px 0 12px 0
+  border-top-left-radius: 24px
+  border-top-right-radius: 24px
+
+  position: absolute
+  bottom: 0
+  left: 0
+
+  width: 100vw
+
+  &-wrapper
+    position: fixed
+
+    width: 100vw
+    height: 100vh
+    transition: 200ms
+
+    &.opened
+      background: rgba(0,0,0, 0.8)
+      top: 0
+      left: 0
+
+    &.closed
+      background: rgba(0,0,0, 0.01)
+      top: 100%
+      left: 0
+
+  &-header
+    display: flex
+    align-items: center
