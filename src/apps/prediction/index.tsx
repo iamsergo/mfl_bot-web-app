@@ -23,6 +23,7 @@ type AppProps = {
 function PredictionApp({ tg, user }: AppProps) {
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(false);
+  const [predictionError, setPredictionError] = React.useState(false);
   const [gamesByGroups, setGamesByGroups] = React.useState<ByKeys<ByKeys<Game[]>>>({});
 
   React.useEffect(() => {
@@ -68,14 +69,13 @@ function PredictionApp({ tg, user }: AppProps) {
       prediction: score,
     };
     try {
-      setLoading(true);
+      tg.MainButton.showProgress();
       await api.createPrediction(options);
       tg.close();
     } catch(err) {
-      setError(true);
+      setPredictionError(true);
     } finally {
-      tg.MainButton.hide();
-      setLoading(false);
+      tg.MainButton.hideProgress();
     }
   }
 
@@ -112,10 +112,10 @@ function PredictionApp({ tg, user }: AppProps) {
     <div id="prediction-app">
       {content}
       <PredictionModal
-        tg={tg}
         game={activeGame}
         onScoreChange={setScore}
         onClose={() => setActiveGame(null)}
+        bottom={predictionError && <div className="prediction-error">Произошла ошибка. Попробуйте еще раз.</div>}
       />
     </div>
   );

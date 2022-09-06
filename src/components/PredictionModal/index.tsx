@@ -5,14 +5,15 @@ import PredictionCounter from "../PredictionCounter";
 import './PredictionModal.sass';
 
 type PredictionModalProps = {
-  tg: any;
   game: Game | null;
   onScoreChange: (score: number[]) => void;
   onClose: () => void;
+  bottom: JSX.Element | boolean;
 };
 
 function PredictionModal({
   game,
+  bottom,
   onScoreChange,
   onClose,
 }: PredictionModalProps) {
@@ -57,6 +58,9 @@ function PredictionModal({
             onDec={() => setAwayScore(s => s - 1)}
           />
         </div>
+        {bottom && <div className="prediction-modal-bottom">
+          {bottom}
+        </div>}
       </div>
     </div>
   );
