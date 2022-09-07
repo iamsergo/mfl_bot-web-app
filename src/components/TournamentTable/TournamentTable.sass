@@ -1,0 +1,56 @@
+.tournament-table
+  border-radius: 12px
+  background: var(--secondary-bg-color)
+  padding: 12px
+  
+  position: relative
+
+  display: flex
+
+  width: 100%
+  overflow: scroll
+
+  &__left
+    min-width: 40vw
+
+  &__row
+    font-size: 14px
+    display: flex
+    align-items: center
+
+    height: 36px
+
+    .value
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: ellipsis
+
+    .team-header
+      font-weight: bold
+      text-align: center
+
+    .logo
+      img
+        border-radius: 50%
+        padding: 2px
+        background: var(--text-color)
+        margin: 0 8px
+        width: 30px
+        height: 30px
+
+    .games,
+    .win,
+    .draw,
+    .lose,
+    .score,
+    .pass,
+    .diff,
+    .points
+      padding: 8px
+      display: flex
+      justify-content: center
+      align-items: center
+      width: 36px
+      height: 36px
+      &.header
+        font-weight: bold

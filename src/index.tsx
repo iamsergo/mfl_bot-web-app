@@ -6,6 +6,7 @@ import { getTgUserFromInitData } from './helpers/get-tg-user-from-init-data';
 import PredictionApp from './apps/prediction';
 import RatingApp from './apps/rating';
 import PredictionsApp from './apps/predictions';
+import TournamentApp from './apps/tournament';
 
 declare global {
   interface Window {
@@ -15,13 +16,16 @@ declare global {
   }
 }
 
-window.Telegram.WebApp = {
-  initData: 'user={"id":0}',
-};
+// window.Telegram.WebApp = {
+//   initData: 'user={"id":0}',
+//   ready() {},
+//   expand() {},
+// };
 
 const PREDICTION_APP_KEY = 'prediction';
 const RATING_APP_KEY = 'rating';
 const PREDICTIONS_APP_KEY = 'predictions';
+const TOURNAMENT_APP_KEY = 'tournament';
 
 const sp = new URLSearchParams(window.location.search);
 const app = sp.get('app');
@@ -32,6 +36,8 @@ if(app === PREDICTION_APP_KEY) {
   console.log('[APP]: rating');
 } else if(app === PREDICTIONS_APP_KEY) {
   console.log('[APP]: predictions');
+} else if(app === TOURNAMENT_APP_KEY) {
+  console.log('[APP]: tournament');
 } else {
   console.log('! UNKNOWN APP!!!');
 }
@@ -46,8 +52,11 @@ let App;
 // if(true) {
 //   App = RatingApp;
 // }
+// if(true) {
+//   App = PredictionsApp;
+// }
 if(true) {
-  App = PredictionsApp;
+  App = TournamentApp;
 }
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
