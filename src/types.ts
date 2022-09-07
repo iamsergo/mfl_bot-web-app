@@ -30,3 +30,12 @@ export type Rating = {
   position: string;
   points: string;
 };
+
+export type PredictionResult = {
+  teams_logos: string[];
+  time: string;
+  teams: string[];
+  prediction: number[];
+  points: number | null;
+  result: number[] | null;
+}; 
