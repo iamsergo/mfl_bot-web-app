@@ -1,0 +1,62 @@
+body
+  background-color: var(--bg-color)
+  color: var(--text-color)
+  
+#rating-app
+  padding: 0 12px
+  .prediction-error
+    background-color: coral
+    color: white
+    font-size: 12px
+    margin: 12px
+    padding: 12px
+    border-radius: 8px
+
+    display: flex
+    justify-content: center
+    align-items: center
+
+  .rating-list
+    display: flex
+    flex-direction: column
+    &-item
+      padding: 12px 0
+      display: flex
+      align-items: center
+      &__prefix
+        color: var(--hint-color)
+      &__username
+        margin-left: 4px
+        font-weight: bold
+      &__points
+        margin-left: 4px
+
+  .rating-footer
+    padding: 12px 0
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+    .loading-error
+      background-color: coral
+      color: white
+      margin: 12px
+      padding: 12px
+      border-radius: 8px
+
+      display: flex
+      justify-content: center
+      align-items: center
+
+    .more-btn
+      padding: 12px 24px
+      border-radius: 12px
+      background: var(--btn-color)
+      color: var(--btn-text-color)
+      font-weight: bold
+      text-align: center      
+      &:active
+        opacity: 0.5
+      &.disabled
+        opacity: 0.2

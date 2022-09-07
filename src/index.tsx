@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.sass';
 
-import PredictionApp from './apps/prediction';
 import { getTgUserFromInitData } from './helpers/get-tg-user-from-init-data';
+import PredictionApp from './apps/prediction';
+import RatingApp from './apps/rating';
 
 declare global {
   interface Window {
@@ -13,13 +14,20 @@ declare global {
   }
 }
 
+window.Telegram.WebApp = {
+  initData: 'user={}',
+};
+
 const PREDICTION_APP_KEY = 'prediction';
+const RATING_APP_KEY = 'rating';
 
 const sp = new URLSearchParams(window.location.search);
 const app = sp.get('app');
 
 if(app === PREDICTION_APP_KEY) {
   console.log('[APP]: prediction');
+} else if(app === RATING_APP_KEY) {
+  console.log('[APP]: rating');
 } else {
   console.log('! UNKNOWN APP!!!');
 }
@@ -28,18 +36,19 @@ if(app === PREDICTION_APP_KEY) {
 const tg = window.Telegram.WebApp;
 
 let App;
+// if(true) {
+//   App = PredictionApp;
+// }
 if(true) {
-  App = PredictionApp;
+  App = RatingApp;
 }
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
     <App
       tg={tg}
       user={getTgUserFromInitData(tg.initData)}
     />
-  </React.StrictMode>
 );

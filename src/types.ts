@@ -23,3 +23,10 @@ export type Game = {
   group: string;
   tour: string;
 };
+
+export type Rating = {
+  user_id: number;
+  username: string;
+  position: string;
+  points: string;
+};
