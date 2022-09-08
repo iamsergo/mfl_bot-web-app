@@ -1,6 +1,6 @@
 import { Game, PredictionResult, Rating, TournamentTableRow } from "../types";
 
-const BASE_URL = process.env.BASE_URL;
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 async function getGamesForUser(data: { userId: number }): Promise<Game[]> {
   const url = `${BASE_URL}/games/?userId=${data.userId}`;
