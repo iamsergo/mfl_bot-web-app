@@ -3,10 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.sass';
 
 import { getTgUserFromInitData } from './helpers/get-tg-user-from-init-data';
-import PredictionApp from './apps/prediction';
-import RatingApp from './apps/rating';
-import PredictionsApp from './apps/predictions';
-import TournamentApp from './apps/tournament';
 
 declare global {
   interface Window {
@@ -30,40 +26,33 @@ const TOURNAMENT_APP_KEY = 'tournament';
 const sp = new URLSearchParams(window.location.search);
 const app = sp.get('app');
 
-if(app === PREDICTION_APP_KEY) {
-  console.log('[APP]: prediction');
-} else if(app === RATING_APP_KEY) {
-  console.log('[APP]: rating');
-} else if(app === PREDICTIONS_APP_KEY) {
-  console.log('[APP]: predictions');
-} else if(app === TOURNAMENT_APP_KEY) {
-  console.log('[APP]: tournament');
-} else {
-  console.log('! UNKNOWN APP!!!');
-}
-
-
 const tg = window.Telegram.WebApp;
 
-let App;
-// if(true) {
-//   App = PredictionApp;
-// }
-// if(true) {
-//   App = RatingApp;
-// }
-// if(true) {
-//   App = PredictionsApp;
-// }
-if(true) {
-  App = TournamentApp;
-}
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
-root.render(
-    <App
-      tg={tg}
-      user={getTgUserFromInitData(tg.initData)}
-    />
-);
+
+if(app === PREDICTION_APP_KEY) {
+  console.log('[APP]: prediction');
+  import('./apps/prediction/').then(({default: PredictionApp}) => {
+    root.render(<PredictionApp tg={tg} user={getTgUserFromInitData(tg.initData)} />);
+  });
+} else if(app === RATING_APP_KEY) {
+  console.log('[APP]: rating');
+  import('./apps/rating/').then(({default: RatingApp}) => {
+    root.render(<RatingApp tg={tg} user={getTgUserFromInitData(tg.initData)} />);
+  });
+} else if(app === PREDICTIONS_APP_KEY) {
+  console.log('[APP]: predictions');
+  import('./apps/predictions/').then(({default: PredictionsApp}) => {
+    root.render(<PredictionsApp tg={tg} user={getTgUserFromInitData(tg.initData)} />);
+  });
+} else if(app === TOURNAMENT_APP_KEY) {
+  console.log('[APP]: tournament');
+  import('./apps/tournament/').then(({default: TournamentApp}) => {
+    root.render(<TournamentApp tg={tg} user={getTgUserFromInitData(tg.initData)} />);
+  });
+} else {
+  console.log('! UNKNOWN APP!!!');
+  root.render(<h1>Ошибка!</h1>);
+}
