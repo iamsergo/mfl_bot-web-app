@@ -33,26 +33,21 @@ const root = ReactDOM.createRoot(
 );
 
 if(app === PREDICTION_APP_KEY) {
-  console.log('[APP]: prediction');
   import('./apps/prediction/').then(({default: PredictionApp}) => {
     root.render(<PredictionApp tg={tg} user={getTgUserFromInitData(tg.initData)} />);
   });
 } else if(app === RATING_APP_KEY) {
-  console.log('[APP]: rating');
   import('./apps/rating/').then(({default: RatingApp}) => {
     root.render(<RatingApp tg={tg} user={getTgUserFromInitData(tg.initData)} />);
   });
 } else if(app === PREDICTIONS_APP_KEY) {
-  console.log('[APP]: predictions');
   import('./apps/predictions/').then(({default: PredictionsApp}) => {
     root.render(<PredictionsApp tg={tg} user={getTgUserFromInitData(tg.initData)} />);
   });
 } else if(app === TOURNAMENT_APP_KEY) {
-  console.log('[APP]: tournament');
   import('./apps/tournament/').then(({default: TournamentApp}) => {
     root.render(<TournamentApp tg={tg} user={getTgUserFromInitData(tg.initData)} />);
   });
 } else {
-  console.log('! UNKNOWN APP!!!');
   root.render(<h1>Ошибка!</h1>);
 }
