@@ -9,7 +9,7 @@ type TournamentTableProps = {
 function TournamentTable({header, rows} : TournamentTableProps) {
   return (
     <div className="tournament-table-wrapper">
-      <h1>{header}</h1>
+      <h2>{header}</h2>
       <div className="tournament-table">
         <div className="tournament-table__left">
           <div className="tournament-table__row" key="team-header">

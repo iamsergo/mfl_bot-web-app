@@ -19,8 +19,8 @@ function GameItem({
         {formatDate(+game.time)}
       </div>
       <div className="game__logos">
-        {game.teams_logos.map((src, i) => {
-          return <img key={i} src={src} alt={game.teams[i]} />
+        {game.teams_logos[0].map((src, i) => {
+          return <img key={i} src={src} alt={game.teams[0][i]} />
         })}
         {game.score && game.score.map((score, i) => {
           return <div key={i} className={`game__score game__score--${i ? 'away' : 'home'}`}>
@@ -29,7 +29,7 @@ function GameItem({
         })}
       </div>
       <div className="game__teams">
-        {game.teams.map((team, i) => {
+        {game.teams[0].map((team, i) => {
           return <div key={i} className="game__team">
             {team}
           </div>

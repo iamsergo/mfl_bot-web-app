@@ -21,8 +21,8 @@ function PredictionItem({ prediction }: PredictionItemProps) {
         {formatDate(+prediction.time)}
       </div>
       <div className="prediction__logos">
-        {prediction.teams_logos.map((src, i) => {
-          return <img key={i} src={src} alt={prediction.teams[i]} />
+        {prediction.teams_logos[0].map((src, i) => {
+          return <img key={i} src={src} alt={prediction.teams[0][i]} />
         })}
         {prediction.result && prediction.result.map((score, i) => {
           return <div key={i} className={`prediction__score prediction__score--${i ? 'away' : 'home'}`}>
@@ -31,7 +31,7 @@ function PredictionItem({ prediction }: PredictionItemProps) {
         })}
       </div>
       <div className="prediction__teams">
-        {prediction.teams.map((team, i) => {
+        {prediction.teams[0].map((team, i) => {
           return <div key={i} className="prediction__team">
             {team}
           </div>

@@ -12,8 +12,8 @@ export enum GameResult {
 
 export type Game = {
   id: number;
-  teams: string[];
-  teams_logos: string[];
+  teams: string[][];
+  teams_logos: string[][];
   // time: number;
   time: string;
   score: number[] | null;
@@ -32,9 +32,9 @@ export type Rating = {
 };
 
 export type PredictionResult = {
-  teams_logos: string[];
+  teams_logos: string[][];
   time: string;
-  teams: string[];
+  teams: string[][];
   prediction: number[];
   points: number | null;
   result: number[] | null;

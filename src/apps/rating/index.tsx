@@ -51,9 +51,13 @@ function RatingApp({}: RatingAppProps) {
                 else if(+u.position === 3) positionPrefix = '🥉';
                 else positionPrefix = `#${u.position} `;
 
+                const username = u.username[0] === '_'
+                  ? u.username.slice(1)
+                  : `@${u.username}`;
+
                 return <div key={u.username} className="rating-list-item">
                   <div className="rating-list-item__prefix">{positionPrefix}</div>
-                  <div className="rating-list-item__username">@{u.username}</div>
+                  <div className="rating-list-item__username">{username}</div>
                   <div className="rating-list-item__points">{u.points}оч.</div>
                 </div>
               })}
