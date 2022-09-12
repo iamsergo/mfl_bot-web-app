@@ -1,6 +1,8 @@
 export function formatDate(time: number): string {
+  if(time === 0) return 'Время неизвестно';
+
   const date = new Date(time);
-  const dw = ['ПН','ВТ','СР','ЧТ','ПТ','СБ','ВС'][date.getDay()];
+  const dw = ['ВС', 'ПН','ВТ','СР','ЧТ','ПТ','СБ'][date.getDay()];
   const d = date.getDate();
   const m = date.getMonth() + 1;
   const h = date.getHours();
